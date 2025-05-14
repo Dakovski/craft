@@ -88,7 +88,6 @@ const Form: React.FC = () => {
   const onReset = useCallback(() => {
     setLabel(DEFAULT_FORM_VALUE.label);
     setRequired(DEFAULT_FORM_VALUE.required);
-    setInitialChoices(DEFAULT_FORM_VALUE.choices);
     setChoices(DEFAULT_FORM_VALUE.choices);
     setDisplayAlpha(DEFAULT_FORM_VALUE.displayAlpha);
     setDefaultValue(DEFAULT_FORM_VALUE.default);
@@ -99,6 +98,10 @@ const Form: React.FC = () => {
       hasTooMany: false,
     });
     localStorage.removeItem("formValue");
+
+    if (editableDivRef.current) {
+      editableDivRef.current.innerText = "";
+    }
   }, []);
 
   /* Save default value to choices (if not present already); this is done on blur or Enter key */
