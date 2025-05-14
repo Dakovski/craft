@@ -27,8 +27,10 @@
 
   .form-content {
     padding: 32px;
+    width: 100%;
+    max-width: 100%;
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr minmax(0, 2fr);
     gap: 32px;
 
     .form-field-name {
