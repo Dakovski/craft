@@ -1,0 +1,52 @@
+:root {
+  --custom-button-primary-bg-color: #007bff;
+  --custom-button-primary-text-color: #fff;
+  --custom-button-success-bg-color: #72b566;
+  --custom-button-success-text-color: #fff;
+  --custom-button-default-bg-color: #f8f9fa;
+  --custom-button-default-text-color: #212529;
+}
+
+.custom-button {
+  background-color: var(--custom-button-default-bg-color);
+  color: var(--custom-button-default-text-color);
+  border: none;
+
+  &:hover:not(:disabled) {
+    opacity: 0.8;
+  }
+
+  &:active:not(:disabled) {
+    opacity: 0.9;
+  }
+}
+
+.primary {
+  background-color: var(--custom-button-primary-bg-color);
+  color: var(--custom-button-primary-text-color);
+}
+
+.success {
+  background-color: var(--custom-button-success-bg-color);
+  color: var(--custom-button-success-text-color);
+}
+
+.custom-button-loading-indicator {
+  width: 16px;
+  height: 16px;
+  border: 5px dotted #fff;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 2s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

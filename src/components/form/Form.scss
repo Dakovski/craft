@@ -1,0 +1,155 @@
+:root {
+  --form-border-color: #cbeaf2;
+  --form-header-bg-color: #dcedf6;
+  --form-header-text-color: #346c90;
+  --form-content-text-color: black;
+  --form-field-border-color: #cccccc;
+  --form-field-border-color-focus: var(--form-header-text-color);
+  --form-field-input-text-color: #545454;
+  --form-validation-color-error: #ed3323;
+  --form-validation-color-length: #ff9bc3;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 600px;
+  border: 1px solid var(--form-border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  color: var(--form-content-text-color);
+
+  .form-header {
+    background-color: var(--form-header-bg-color);
+    padding: 16px;
+    color: var(--form-header-text-color);
+    font-weight: bold;
+  }
+
+  .form-content {
+    padding: 32px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 32px;
+
+    .form-field-name {
+      align-self: center;
+    }
+
+    .form-field-input {
+      padding: 8px;
+      height: 32px;
+      width: 100%;
+      border: 1px solid var(--form-field-border-color);
+      border-radius: 4px;
+      background-color: white;
+      color: var(--form-field-input-text-color);
+
+      &:focus {
+        outline: none;
+        border-color: var(--form-field-border-color-focus);
+      }
+
+      &.validation-error {
+        border-color: var(--form-validation-color-error);
+      }
+    }
+
+    div.form-field-input {
+      height: 100px;
+      max-height: 100px;
+      overflow: auto;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .form-field-validation-message {
+      color: var(--form-validation-color-error);
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    .form-field-types {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 16px;
+    }
+
+    .form-field-settings {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--form-field-input-text-color);
+
+      input[type="checkbox"] {
+        width: 16px;
+        min-width: 16px;
+        height: 16px;
+        min-height: 16px;
+      }
+    }
+
+    .form-footer {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      .form-footer-button {
+        outline: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: auto;
+        height: auto;
+
+        &:last-child {
+          background-color: transparent;
+          border-color: transparent;
+          padding: 0;
+          color: var(--form-validation-color-error);
+
+          &:hover:not(:disabled) {
+            opacity: 0.8;
+          }
+
+          &:active:not(:disabled) {
+            opacity: 0.9;
+          }
+        }
+      }
+    }
+
+    .legend-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+    }
+
+    .legend-color {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::highlight(too-long) {
+      background-color: var(--form-validation-color-length);
+      color: white;
+    }
+
+    ::highlight(duplicate) {
+      background-color: var(--form-validation-color-error);
+      color: white;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .form-container .form-content {
+    .form-field-types {
+      grid-template-columns: unset;
+    }
+
+    .form-footer {
+      flex-direction: column;
+    }
+  }
+}
